@@ -147,10 +147,9 @@ df["claims_per_exposure"] = df["cost_claims_year"] / (df["exposure_time"] + 0.01
 
 df["age_band"] = pd.cut(
     df["age"],
-    bins=[0, 25, 35, 50, 65, 120],
+    bins=[-1, 25, 35, 50, 65, 150],
     labels=["18-25", "26-35", "36-50", "51-65", "65+"],
 )
-
 
 # ====================================================
 # SENIORITY BANDS
