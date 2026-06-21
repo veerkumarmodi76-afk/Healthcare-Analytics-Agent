@@ -104,12 +104,9 @@ def predict_risk_scores():
     y_proba = model.predict_proba(X_df)
 
     # Risk score
-    risk_score = (
-        y_proba[:, 0] * 0.0
-        + y_proba[:, 1] * (1 / 3)
-        + y_proba[:, 2] * (2 / 3)
-        + y_proba[:, 3] * 1.0
-    ) * 100
+    predicted_class = np.argmax(y_proba, axis=1)
+
+    risk_score = predicted_class * 25 + np.max(y_proba, axis=1) * 25
 
     class_map = {0: "Low", 1: "Medium", 2: "High", 3: "VeryHigh"}
     risk_labels = [class_map[int(i)] for i in y_pred]
