@@ -1,0 +1,24 @@
+============================================================
+  HEALTHCARE ANALYTICS AGENT — EXECUTIVE SUMMARY
+============================================================
+
+MODULE 2 — UNDERWRITING RISK SCORING
+----------------------------------------
+  Total applicants scored : 228,711
+  Risk score (mean)       : 49.95
+  Risk score (std)        : 37.22
+
+  Underwriting Flag Distribution:
+    Standard      :  114,354  (50.0%)
+    Rated         :   57,502  (25.1%)
+    Decline       :   56,855  (24.9%)
+
+  Risk Class Distribution:
+    High          :   57,502  (25.1%)
+    Low           :   57,185  (25.0%)
+    Medium        :   57,169  (25.0%)
+    VeryHigh      :   56,855  (24.9%)
+
+============================================================
+  END OF REPORT
+============================================================
