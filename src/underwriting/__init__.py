@@ -6,5 +6,5 @@ __all__ = [
     "train_underwriting_model",
     "predict_risk_scores",
     "generate_global_shap_plots",
-    "generate_local_shap_plot"
+    "generate_local_shap_plot",
 ]
