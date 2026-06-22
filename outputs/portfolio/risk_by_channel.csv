@@ -1,0 +1,12 @@
+distribution_channel,risk_class,policy_count
+A,,82191
+A,High,55546
+A,Medium,54666
+A,Low,53831
+A,VeryHigh,53632
+D,,2039
+I,,143014
+I,Low,4513
+I,Medium,3649
+I,High,2253
+I,VeryHigh,621

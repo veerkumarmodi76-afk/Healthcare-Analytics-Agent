@@ -156,7 +156,7 @@ def predict_risk_scores():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     output_df = pd.DataFrame({
-        "applicant_id": df[id_col],
+        "row_id": df[id_col],
         "risk_score": risk_score,
         "risk_class": y_pred,
         "risk_class_label": risk_labels,

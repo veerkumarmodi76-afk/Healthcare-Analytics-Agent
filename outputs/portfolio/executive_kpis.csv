@@ -1,0 +1,9 @@
+metric,value
+total_policies,45162.0
+total_insured,1467.0
+total_premium,614411337.42
+total_claims,246397722.0
+avg_claim_frequency,25.7597
+avg_claim_severity,30.87
+portfolio_loss_ratio_pct,40.1
+lapse_rate_pct,9.56
