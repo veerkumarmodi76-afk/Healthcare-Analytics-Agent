@@ -301,3 +301,17 @@ def get_dashboard_data_service(
     ) -> pd.DataFrame:
 
         return self._load_csv("portfolio_growth_summary.csv")
+
+
+def get_risk_mix_trend(
+    self,
+) -> pd.DataFrame:
+
+    return self._load_csv("risk_mix_trend.csv")
+
+
+def get_portfolio_growth_summary(
+    self,
+) -> pd.DataFrame:
+
+    return self._load_csv("portfolio_growth_summary.csv")
