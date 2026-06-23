@@ -1,9 +1,3 @@
-"""
-src/portfolio/metrics.py
-
-Portfolio Analytics Orchestrator
-"""
-
 from __future__ import annotations
 
 import logging
