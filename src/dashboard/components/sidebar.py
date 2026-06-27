@@ -5,13 +5,11 @@ Dashboard Sidebar Component
 
 Responsibilities
 ----------------
-- Display application information
 - Display portfolio status
 - Display pipeline status
-- Display quick actions
 - Display system information
 
-No business logic lives here.
+Navigation is handled automatically by Streamlit.
 """
 
 from __future__ import annotations
@@ -73,7 +71,7 @@ def render_sidebar():
         st.title("🏥 AI-AIP")
 
         st.caption(
-            "Healthcare Analytics Agent"
+            "Healthcare Insurance Decision Intelligence Platform"
         )
 
         st.divider()
@@ -82,7 +80,7 @@ def render_sidebar():
         # Portfolio Status
         # --------------------------------------------------
 
-        st.subheader("Portfolio")
+        st.subheader("📁 Portfolio")
 
         if portfolio_available():
 
@@ -90,36 +88,25 @@ def render_sidebar():
 
         else:
 
-            st.warning("No Portfolio")
+            st.warning("Awaiting Dataset")
 
-        st.caption(
-            f"Last Run:\n{last_pipeline_run()}"
-        )
+        st.caption(f"Last Pipeline Run\n{last_pipeline_run()}")
 
         st.divider()
 
         # --------------------------------------------------
-        # Pipeline
+        # Pipeline Status
         # --------------------------------------------------
 
-        st.subheader("Pipeline")
+        st.subheader("⚙ Pipeline")
 
-        if "pipeline_running" in st.session_state:
+        if st.session_state.get("pipeline_running", False):
 
-            if st.session_state.pipeline_running:
+            st.info("Running")
 
-                st.info("Running")
+        elif st.session_state.get("pipeline_success", False):
 
-            elif st.session_state.get(
-                "pipeline_success",
-                False,
-            ):
-
-                st.success("Completed")
-
-            else:
-
-                st.caption("Idle")
+            st.success("Completed")
 
         else:
 
@@ -128,69 +115,18 @@ def render_sidebar():
         st.divider()
 
         # --------------------------------------------------
-        # Modules
+        # System Information
         # --------------------------------------------------
 
-        st.subheader("Modules")
-
-        modules = [
-            "Validation",
-            "Preprocessing",
-            "Underwriting",
-            "Pricing",
-            "Lapse",
-            "Portfolio",
-        ]
-
-        for module in modules:
-            st.write(f"✓ {module}")
-
-        st.divider()
-
-        # --------------------------------------------------
-        # Dashboard
-        # --------------------------------------------------
-
-        st.subheader("Dashboard")
-
-        st.caption(
-            """
-Use the page navigation
-above to access:
-
-• Executive Dashboard
-
-• Risk Analytics
-
-• Claims Analytics
-
-• Retention Analytics
-
-• Pricing Analytics
-
-• Trend Analytics
-
-• Download Center
-
-• AI Copilot
-"""
-        )
-
-        st.divider()
-
-        # --------------------------------------------------
-        # System
-        # --------------------------------------------------
-
-        st.subheader("System")
+        st.subheader("🖥 System")
 
         st.metric(
             "Version",
-            "1.0.0",
+            "2.0.0",
         )
 
         st.metric(
-            "Status",
+            "Platform",
             "Operational",
         )
 
@@ -204,5 +140,5 @@ above to access:
         st.divider()
 
         st.caption(
-            "Healthcare Insurance\nDecision Intelligence Platform"
+            "Enterprise AI Platform for\nHealthcare Insurance Analytics"
         )
