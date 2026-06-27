@@ -349,6 +349,8 @@ pygments==2.20.0
     #   nbconvert
 pyparsing==3.3.2
     # via matplotlib
+pypdf==6.14.2
+    # via healthcare-analytics-agent
 python-dateutil==2.9.0.post0
     # via
     #   arrow
