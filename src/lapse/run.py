@@ -5,10 +5,9 @@ Pipeline Runner
 
 Workflow
 --------
-1. Train Model
-2. Predict Lapse Probability
-3. Generate Retention Actions
-4. Generate Business Reports
+1. Predict Lapse Probability
+2. Generate Retention Actions
+3. Generate Business Reports
 
 Outputs
 -------
@@ -18,7 +17,6 @@ outputs/lapse/
 
 import time
 
-from .train import train_lapse_model
 from .predict import predict_lapse
 from .retention import generate_retention_actions
 from .reports import generate_report
@@ -33,31 +31,24 @@ def run():
     start_time = time.time()
 
     # ------------------------------------------------------------------
-    # Step 1 : Model Training
+    # Step 1 : Portfolio Prediction
     # ------------------------------------------------------------------
 
-    print("\n[1/4] Training Lapse Model...\n")
-    train_lapse_model()
-
-    # ------------------------------------------------------------------
-    # Step 2 : Portfolio Prediction
-    # ------------------------------------------------------------------
-
-    print("\n[2/4] Generating Predictions...\n")
+    print("\n[1/3] Generating Predictions...\n")
     predictions = predict_lapse()
 
     # ------------------------------------------------------------------
-    # Step 3 : Retention Analytics
+    # Step 2 : Retention Analytics
     # ------------------------------------------------------------------
 
-    print("\n[3/4] Generating Retention Actions...\n")
+    print("\n[2/3] Generating Retention Actions...\n")
     retention_report = generate_retention_actions()
 
     # ------------------------------------------------------------------
-    # Step 4 : Business Report Generation
+    # Step 3 : Business Report Generation
     # ------------------------------------------------------------------
 
-    print("\n[4/4] Generating Reports...\n")
+    print("\n[3/3] Generating Reports...\n")
     report = generate_report()
 
     elapsed = time.time() - start_time
