@@ -2,7 +2,6 @@ import json
 import pandas as pd
 from pathlib import Path
 
-from .train import train_underwriting_model
 from .predict import predict_underwriting
 from .explain import (
     generate_global_shap_plots,
@@ -36,9 +35,13 @@ def generate_underwriting_report():
 
     total_applicants = len(df)
 
-    risk_distribution = df["risk_class_label"].value_counts(normalize=True) * 100
+    risk_distribution = (
+        df["risk_class_label"].value_counts(normalize=True) * 100
+    )
 
-    decision_distribution = df["underwriting_flag"].value_counts(normalize=True) * 100
+    decision_distribution = (
+        df["underwriting_flag"].value_counts(normalize=True) * 100
+    )
 
     summary = {
         "total_applicants": int(total_applicants),
@@ -125,18 +128,15 @@ def run():
     print("=" * 70)
 
     # Step 1
-    train_underwriting_model()
-
-    # Step 2
     predict_underwriting()
 
-    # Step 3
+    # Step 2
     generate_global_shap_plots()
 
-    # Step 4
+    # Step 3
     generate_local_shap_plot(0)
 
-    # Step 5
+    # Step 4
     generate_underwriting_report()
 
     print("\n" + "=" * 70)
@@ -146,15 +146,14 @@ def run():
     print("\nArtifacts Generated:")
 
     print(
-        "\nTraining:"
-        "\n- underwriting_model.pkl"
-        "\n- feature_importance.csv"
-        "\n- training_metrics.json"
-        "\n- confusion_matrix.csv"
-        "\n- class_distribution.csv"
+        "\nModel Used:"
+        "\n- models/underwriting/underwriting_model.pkl"
     )
 
-    print("\nPredictions:\n- underwriting_predictions.csv")
+    print(
+        "\nPredictions:"
+        "\n- underwriting_predictions.csv"
+    )
 
     print(
         "\nExplainability:"
@@ -165,7 +164,11 @@ def run():
         "\n- applicant_0_waterfall.png"
     )
 
-    print("\nGovernance:\n- rule_distribution.csv\n- underwriting_summary.json")
+    print(
+        "\nGovernance:"
+        "\n- rule_distribution.csv"
+        "\n- underwriting_summary.json"
+    )
 
     print("=" * 70)
 
