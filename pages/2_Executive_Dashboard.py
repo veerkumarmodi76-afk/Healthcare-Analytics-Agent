@@ -6,7 +6,7 @@ PAGE = (
     / "src"
     / "dashboard"
     / "pages"
-    / "1_Executive_Dashboard.py"
+    / "2_Executive_Dashboard.py"
 )
 
 run_path(str(PAGE), run_name="__main__")
