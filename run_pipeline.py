@@ -1,54 +1,73 @@
-from src.data.preprocess import run as run_preprocessing
+"""
+run_pipeline.py
 
-from src.underwriting.run import run as run_underwriting
+Healthcare Analytics Agent
 
-from src.pricing.run import run as run_pricing
+Master entry point for executing the complete
+Healthcare Insurance Decision Intelligence Pipeline.
 
-from src.lapse.run import run as run_lapse
+Usage
+-----
+python run_pipeline.py
+"""
 
-from src.portfolio.run import run as run_portfolio
+from __future__ import annotations
 
-import logging
+import sys
+import traceback
 
-logging.basicConfig(level=logging.INFO)
+from src.pipeline import PipelineRunner
 
 
-def main():
+def print_header() -> None:
+    print("\n" + "=" * 80)
+    print("Healthcare Analytics Agent")
+    print("Healthcare Insurance Decision Intelligence Platform")
+    print("=" * 80)
+    print("Starting Master Pipeline...\n")
 
-    print("\n" + "=" * 60)
-    print("PHASE 1 : DATA PREPROCESSING")
-    print("=" * 60)
 
-    run_preprocessing()
+def print_footer(success: bool) -> None:
+    print("\n" + "=" * 80)
 
-    print("\n" + "=" * 60)
-    print("PHASE 2 : UNDERWRITING ENGINE")
-    print("=" * 60)
+    if success:
+        print("Pipeline completed successfully.")
+    else:
+        print("Pipeline terminated with errors.")
 
-    run_underwriting()
+    print("=" * 80)
 
-    print("\n" + "=" * 60)
-    print("PHASE 3 : PRICING ENGINE")
-    print("=" * 60)
 
-    run_pricing()
+def main() -> int:
+    print_header()
 
-    print("\n" + "=" * 60)
-    print("PHASE 4 : LAPSE ENGINE")
-    print("=" * 60)
+    runner = PipelineRunner()
 
-    run_lapse()
+    try:
+        runner.run()
 
-    print("\n" + "=" * 60)
-    print("PHASE 5 : PORTFOLIO ANALYTICS")
-    print("=" * 60)
+        print_footer(True)
 
-    run_portfolio()
+        return 0
 
-    print("\n" + "=" * 60)
-    print("PIPELINE COMPLETE")
-    print("=" * 60)
+    except Exception as exc:
+
+        print("\n" + "=" * 80)
+        print("PIPELINE FAILED")
+        print("=" * 80)
+
+        stage = getattr(exc, "stage", "Unknown")
+
+        print(f"Stage : {stage}")
+        print(f"Reason: {exc}")
+
+        print("\nDetailed Traceback\n")
+        traceback.print_exc()
+
+        print_footer(False)
+
+        return 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

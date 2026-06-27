@@ -1,0 +1,32 @@
+feature,importance
+distribution_channel_I,0.06569001
+distribution_channel_A,0.056677647
+seniority_policy,0.0542276
+seniority_band_3-5,0.052537415
+premium_per_exposure,0.04583522
+portfolio_segment_encoded,0.044188675
+family_size,0.038453512
+claims_per_exposure,0.038114976
+age_band_51-65,0.037324656
+premium,0.034725413
+seniority_band_10+,0.03285969
+segment_score,0.03230115
+type_product_S,0.031640917
+age_band_18-25,0.02980297
+seniority_band_0-2,0.029519292
+gender_M,0.029248623
+portfolio_segment_Moderate Exposure,0.028629642
+seniority_insured,0.028355893
+type_policy_C,0.02795694
+age_band_36-50,0.027868493
+age,0.02686716
+type_product_P,0.025561301
+type_policy_I,0.02429647
+age_band_26-35,0.024224237
+portfolio_segment_High Exposure,0.02417957
+age_band_score,0.022731904
+gender_F,0.021522177
+portfolio_segment_Critical Exposure,0.018565007
+age_band_65+,0.016152006
+portfolio_segment_Low Exposure,0.016034398
+seniority_band_6-10,0.0139070265

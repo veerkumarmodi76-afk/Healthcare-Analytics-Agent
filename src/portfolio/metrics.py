@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 MASTER_REQUIRED_COLUMNS = [
+    "ID",
     "ID_policy",
     "ID_insured",
     "period",
@@ -25,14 +26,16 @@ MASTER_REQUIRED_COLUMNS = [
     "lapse_binary",
 ]
 
-
 @dataclass(slots=True)
 class PortfolioAnalyticsResult:
     risk: RiskAnalyticsResult
     claims: ClaimsAnalyticsResult
     trends: TrendsAnalyticsResult
+
     executive_kpis: pd.DataFrame
     portfolio_metrics: pd.DataFrame
+    portfolio_health: pd.DataFrame
+
     premium_leakage: pd.DataFrame
     retention_summary: pd.DataFrame
 
@@ -42,6 +45,35 @@ def validate_master_dataframe(df: pd.DataFrame) -> None:
     if missing:
         raise ValueError(f"Missing master columns: {missing}")
 
+def calculate_portfolio_statistics(df: pd.DataFrame) -> dict:
+    """
+    Compute reusable portfolio statistics.
+    """
+
+    total_premium = df["premium"].sum()
+    total_claims = df["cost_claims_year"].sum()
+    total_profit = total_premium - total_claims
+
+    loss_ratio = (
+        total_claims / total_premium * 100
+        if total_premium > 0
+        else 0
+    )
+
+    return {
+        "total_premium": round(total_premium, 2),
+        "total_claims": round(total_claims, 2),
+        "total_profit": round(total_profit, 2),
+        "loss_ratio": round(loss_ratio, 2),
+        "avg_risk_score": round(df["risk_score"].mean(), 2),
+        "avg_lapse_probability": round(
+            df["lapse_probability"].mean() * 100,
+            2,
+        ),
+        "avg_premium": round(df["premium"].mean(), 2),
+        "avg_claim_cost": round(df["cost_claims_year"].mean(), 2),
+        "lapse_rate": round(df["lapse_binary"].mean() * 100, 2),
+    }
 
 def build_master_dataframe(
     processed_df: pd.DataFrame,
@@ -98,8 +130,7 @@ def build_master_dataframe(
 
 def generate_executive_kpis(df: pd.DataFrame) -> pd.DataFrame:
 
-    total_premium = df["premium"].sum()
-    total_claims = df["cost_claims_year"].sum()
+    stats = calculate_portfolio_statistics(df)
 
     return pd.DataFrame({
         "metric": [
@@ -107,48 +138,85 @@ def generate_executive_kpis(df: pd.DataFrame) -> pd.DataFrame:
             "total_insured",
             "total_premium",
             "total_claims",
-            "avg_claim_frequency",
-            "avg_claim_severity",
-            "portfolio_loss_ratio_pct",
+            "total_profit",
+            "loss_ratio_pct",
             "lapse_rate_pct",
         ],
         "value": [
             df["ID_policy"].nunique(),
-            df["ID_insured"].nunique(),
-            round(total_premium, 2),
-            round(total_claims, 2),
-            round(df["claim_frequency"].mean(), 4),
-            round(df["claim_severity"].mean(), 2),
-            round((total_claims / total_premium) * 100, 2),
-            round(df["lapse_binary"].mean() * 100, 2),
+            df["ID"].nunique(),
+            stats["total_premium"],
+            stats["total_claims"],
+            stats["total_profit"],
+            stats["loss_ratio"],
+            stats["lapse_rate"],
         ],
     })
-
 
 def generate_portfolio_metrics(df: pd.DataFrame) -> pd.DataFrame:
 
-    total_premium = df["premium"].sum()
-    total_claims = df["cost_claims_year"].sum()
+    stats = calculate_portfolio_statistics(df)
 
     return pd.DataFrame({
         "metric": [
-            "total_premium",
-            "total_claims",
-            "total_profit",
-            "loss_ratio_pct",
             "avg_risk_score",
             "avg_lapse_probability",
+            "avg_premium",
+            "avg_claim_cost",
+            "avg_claim_frequency",
+            "avg_claim_severity",
         ],
         "value": [
-            round(total_premium, 2),
-            round(total_claims, 2),
-            round(total_premium - total_claims, 2),
-            round((total_claims / total_premium) * 100, 2),
-            round(df["risk_score"].mean(), 2),
-            round(df["lapse_probability"].mean() * 100, 2),
+            stats["avg_risk_score"],
+            stats["avg_lapse_probability"],
+            stats["avg_premium"],
+            stats["avg_claim_cost"],
+            round(df["claim_frequency"].mean(), 4),
+            round(df["claim_severity"].mean(), 2),
         ],
     })
 
+def generate_portfolio_health(df: pd.DataFrame) -> pd.DataFrame:
+
+    stats = calculate_portfolio_statistics(df)
+
+    loss_component = max(0, 100 - stats["loss_ratio"])
+    lapse_component = max(0, 100 - stats["lapse_rate"])
+
+    profit_margin = (
+        stats["total_profit"] / stats["total_premium"] * 100
+        if stats["total_premium"] > 0
+        else 0
+    )
+
+    profit_component = min(100, max(0, profit_margin))
+
+    score = round(
+        loss_component * 0.45 +
+        lapse_component * 0.25 +
+        profit_component * 0.30,
+        2,
+    )
+
+    if score >= 85:
+        status = "Excellent"
+    elif score >= 70:
+        status = "Good"
+    elif score >= 50:
+        status = "Moderate"
+    else:
+        status = "Poor"
+
+    return pd.DataFrame({
+        "metric": [
+            "portfolio_health_score",
+            "portfolio_status",
+        ],
+        "value": [
+            score,
+            status,
+        ],
+    })
 
 def generate_premium_leakage(df: pd.DataFrame) -> pd.DataFrame:
 
@@ -182,7 +250,6 @@ def generate_retention_summary(df: pd.DataFrame) -> pd.DataFrame:
         .reset_index()
     )
 
-
 def generate_portfolio_analytics(
     master_df: pd.DataFrame,
 ) -> PortfolioAnalyticsResult:
@@ -199,10 +266,10 @@ def generate_portfolio_analytics(
         trends=trends_results,
         executive_kpis=generate_executive_kpis(master_df),
         portfolio_metrics=generate_portfolio_metrics(master_df),
+        portfolio_health=generate_portfolio_health(master_df),
         premium_leakage=generate_premium_leakage(master_df),
         retention_summary=generate_retention_summary(master_df),
     )
-
 
 def save_portfolio_outputs(
     results: PortfolioAnalyticsResult,
@@ -216,6 +283,7 @@ def save_portfolio_outputs(
     results.executive_kpis.to_csv(output_path / "executive_kpis.csv", index=False)
 
     results.portfolio_metrics.to_csv(output_path / "portfolio_metrics.csv", index=False)
+    results.portfolio_health.to_csv(output_path / "portfolio_health.csv",index=False)
 
     results.premium_leakage.to_csv(output_path / "premium_leakage.csv", index=False)
 

@@ -42,6 +42,8 @@ class ExecutiveSummaryGenerator:
 
         portfolio_metrics = self._load_csv("portfolio_metrics.csv")
 
+        executive_kpis = self._load_csv("executive_kpis.csv")
+
         risk_profitability = self._load_csv("risk_profitability.csv")
 
         retention_summary = self._load_csv("retention_summary.csv")
@@ -55,34 +57,53 @@ class ExecutiveSummaryGenerator:
             )
         )
 
-        total_premium = metrics.get(
-            "total_premium",
-            0,
+        kpis = dict(
+            zip(
+                executive_kpis["metric"],
+                executive_kpis["value"],
+            )
         )
 
-        total_claims = metrics.get(
-            "total_claims",
-            0,
+        total_premium = float(
+            kpis.get(
+                "total_premium",
+                0,
+            )
         )
 
-        total_profit = metrics.get(
-            "total_profit",
-            0,
+        total_claims = float(
+            kpis.get(
+                "total_claims",
+                0,
+            )
         )
 
-        loss_ratio = metrics.get(
-            "loss_ratio_pct",
-            0,
+        total_profit = float(
+            kpis.get(
+                "total_profit",
+                0,
+            )
         )
 
-        avg_risk_score = metrics.get(
-            "avg_risk_score",
-            0,
+        loss_ratio = float(
+            kpis.get(
+                "loss_ratio_pct",
+                0,
+            )
         )
 
-        avg_lapse_probability = metrics.get(
-            "avg_lapse_probability",
-            0,
+        avg_risk_score = float(
+            metrics.get(
+                "avg_risk_score",
+                0,
+            )
+        )
+
+        avg_lapse_probability = float(
+            metrics.get(
+                "avg_lapse_probability",
+                0,
+            )
         )
 
         summary = []
