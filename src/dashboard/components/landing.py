@@ -142,6 +142,31 @@ def upload_section():
 
         st.success("Dataset uploaded successfully.")
 
+        # ======================================================
+        # Pipeline Configuration
+        # ======================================================
+
+        st.subheader("⚙️ Pipeline Configuration")
+
+        execution_mode = st.radio(
+            "Execution Mode",
+            [
+                "Production (Use Pretrained Models)",
+                "Developer (Retrain Models)",
+            ],
+            index=0,
+            help="""
+Production:
+Uses pretrained models for fast predictions.
+
+Developer:
+Retrains all models before generating predictions.
+Recommended only when models need updating.
+""",
+        )
+
+        st.session_state["execution_mode"] = execution_mode
+
         st.write("")
 
         if st.button(
