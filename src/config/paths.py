@@ -42,8 +42,6 @@ class Paths:
     PROCESSED_DATA_FILE = PROCESSED_DATA_DIR / "processed_data.csv"
 
     UPLOADS_DIR = DATA_DIR / "uploads"
-    
-    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
     # ==========================================================
     # Models
@@ -125,6 +123,7 @@ class Paths:
             cls.REPORT_DIR,
             cls.DOCS_DIR,
             cls.TEMP_DIR,
+            cls.UPLOADS_DIR,
         ]
 
         for directory in directories:

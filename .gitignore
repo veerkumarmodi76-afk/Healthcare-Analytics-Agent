@@ -3,27 +3,62 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Virtual env
+# Virtual environments
 .venv/
 venv/
+env/
 
-# Generated outputs
-outputs/
-reports/
+# IDE
+.vscode/
+.idea/
 
-# Development
-notebooks/
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Generated data
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+data/uploads/*
+!data/uploads/.gitkeep
+
+outputs/*
+!outputs/**/.gitkeep
 
 # Logs
 *.log
-
-# Temporary
-temp/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# IDE
-.vscode/
-.idea/
+# Model cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+
+# Temporary files
+temp/
+src/temp/*
+!src/temp/.gitkeep
+
+# Logs
+outputs/logs/*
+!outputs/logs/.gitkeep
+
+# Python
+.python-version
