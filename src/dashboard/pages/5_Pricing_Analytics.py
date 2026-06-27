@@ -221,7 +221,7 @@ with left:
 
             names="Risk Class",
 
-            values="Policies",
+            values="Insured Lives",
 
             hole=0.55,
 
