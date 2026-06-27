@@ -28,21 +28,26 @@ st.set_page_config(
 def initialize_session():
 
     defaults = {
-
         "pipeline_running": False,
         "pipeline_finished": False,
         "pipeline_success": False,
         "pipeline_state": None,
         "messages": [],
         "copilot": None,
-
     }
 
     for key, value in defaults.items():
-
         if key not in st.session_state:
-
             st.session_state[key] = value
 
 
-initialize_session()
+# ----------------------------------------------------------
+# Main
+# ----------------------------------------------------------
+
+def main():
+    initialize_session()
+
+
+if __name__ == "__main__":
+    main()
