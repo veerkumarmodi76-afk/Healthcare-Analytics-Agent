@@ -1,20 +1,19 @@
+```python
 """
 0_Home.py
 
 Healthcare Insurance Decision Intelligence Platform
 
-Home / Welcome Page
+Enterprise Landing Page
+------------------------------------
+• Modern SaaS-inspired UI
+• Platform Overview
+• Quick Start Guide
+• Workflow
+• Execution Modes
+• Professional Styling
 
-Responsibilities
-----------------
-- Introduce the platform
-- Guide first-time users
-- Explain the workflow
-- Explain execution modes
-- Describe every module
-- Provide quick start instructions
-
-No analytics logic lives here.
+Part 1
 """
 
 from __future__ import annotations
@@ -26,33 +25,282 @@ import streamlit as st
 # ==========================================================
 
 st.set_page_config(
-    page_title="Home",
-    page_icon="🏠",
+    page_title="Healthcare Insurance Decision Intelligence Platform",
+    page_icon="🏥",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 # ==========================================================
-# HEADER
+# CUSTOM CSS
 # ==========================================================
-
-st.title("🏥 Healthcare Insurance Decision Intelligence Platform")
-st.caption("Enterprise AI Platform for Healthcare Insurance Analytics")
-
-st.divider()
 
 st.markdown(
     """
-Welcome to the **Healthcare Insurance Decision Intelligence Platform**.
+<style>
 
-This platform transforms raw healthcare insurance portfolios into
-business-ready insights using **Machine Learning**, **Explainable AI (XAI)**,
-and **Business Intelligence**.
+.block-container{
+    padding-top:2rem;
+    padding-bottom:2rem;
+    max-width:1400px;
+}
 
-It assists healthcare insurers in making faster, more consistent,
-and data-driven decisions across underwriting, pricing,
-customer retention, and portfolio management.
+h1,h2,h3{
+    font-weight:700;
+}
+
+.hero{
+    padding:45px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#0F62FE,#42BE65);
+    color:white;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+}
+
+.metric-card{
+    background:#fafafa;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #e6e6e6;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    height:150px;
+}
+
+.metric-card h2{
+    color:#0F62FE;
+    margin-bottom:10px;
+}
+
+.section-card{
+    background:#ffffff;
+    padding:28px;
+    border-radius:18px;
+    border:1px solid #ebebeb;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+.mode-card{
+    background:#ffffff;
+    padding:30px;
+    border-radius:18px;
+    border:2px solid #ececec;
+    min-height:370px;
+}
+
+.mode-card h3{
+    color:#0F62FE;
+}
+
+.step-card{
+    background:#F8F9FA;
+    border-left:5px solid #0F62FE;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.highlight{
+    color:#0F62FE;
+    font-weight:600;
+}
+
+.small{
+    color:gray;
+    font-size:14px;
+}
+
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
+# ==========================================================
+# HERO SECTION
+# ==========================================================
+
+st.markdown(
+    """
+<div class="hero">
+
+# 🏥 Healthcare Insurance Decision Intelligence Platform
+
+### AI-Powered Healthcare Insurance Analytics Platform
+
+Transform healthcare insurance portfolios into actionable business intelligence using **Machine Learning**, **Explainable AI (SHAP)**, interactive dashboards, and an AI Copilot.
+
+Designed for:
+
+• Underwriters  
+• Pricing Analysts  
+• Portfolio Managers  
+• Business Executives  
+• Data Scientists
+
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+# ==========================================================
+# QUICK LINKS
+# ==========================================================
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.link_button(
+        "🌐 Live Demo",
+        "https://healthcare-analytics-agent-4.streamlit.app/",
+        use_container_width=True,
+    )
+
+with col2:
+    st.link_button(
+        "💻 GitHub Repository",
+        "https://github.com/veerkumarmodi76-afk/Healthcare-Analytics-Agent",
+        use_container_width=True,
+    )
+
+with col3:
+    st.link_button(
+        "👤 Project Lead",
+        "https://www.linkedin.com/in/veerkumarmodi",
+        use_container_width=True,
+    )
+
+st.write("")
+
+# ==========================================================
+# PLATFORM SNAPSHOT
+# ==========================================================
+
+st.header("📊 Platform Snapshot")
+
+c1, c2, c3, c4 = st.columns(4)
+
+with c1:
+    st.markdown(
+        """
+<div class="metric-card">
+
+<h2>3</h2>
+
+Machine Learning Models
+
+Underwriting
+
+Pricing
+
+Retention
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+with c2:
+    st.markdown(
+        """
+<div class="metric-card">
+
+<h2>7+</h2>
+
+Analytics Modules
+
+Executive Dashboard
+
+Claims
+
+Pricing
+
+Retention
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+with c3:
+    st.markdown(
+        """
+<div class="metric-card">
+
+<h2>AI</h2>
+
+Enterprise Copilot
+
+Portfolio Insights
+
+Business Q&A
+
+Document Context
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+with c4:
+    st.markdown(
+        """
+<div class="metric-card">
+
+<h2>1 Click</h2>
+
+Automated Pipeline
+
+Validation
+
+Preprocessing
+
+Predictions
+
+Dashboards
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+st.write("")
+
+# ==========================================================
+# ABOUT PLATFORM
+# ==========================================================
+
+st.header("📖 About the Platform")
+
+st.markdown(
+"""
+The **Healthcare Insurance Decision Intelligence Platform** integrates multiple insurance analytics workflows into a single intelligent application.
+
+Instead of relying on disconnected tools for underwriting, pricing, portfolio monitoring, and reporting, users can upload a healthcare insurance dataset and execute an automated analytics pipeline that produces interactive dashboards and business-ready insights.
+
+The platform combines:
+
+- 🤖 Machine Learning
+- 📈 Business Intelligence
+- 🔍 Explainable AI (SHAP)
+- 💬 AI-Assisted Decision Support
+- 📊 Interactive Dashboards
+
+into one seamless experience.
 """
 )
+
+st.divider()
 
 # ==========================================================
 # PLATFORM WORKFLOW
@@ -60,53 +308,171 @@ customer retention, and portfolio management.
 
 st.header("🛣 Platform Workflow")
 
+st.info(
+"""
+Every uploaded dataset follows the same standardized analytics pipeline.
+"""
+)
+
 st.code(
-    """
+"""
 Upload Dataset
       │
       ▼
-Validate Data
+Automatic Validation
       │
       ▼
-Preprocess Portfolio
+Data Preprocessing
+      │
+      ▼
+Feature Engineering
       │
       ▼
 Choose Execution Mode
       │
       ▼
-Run Analytics Pipeline
+Machine Learning Pipeline
+      │
+      ├────────► Underwriting
+      │
+      ├────────► Pricing
+      │
+      └────────► Retention
       │
       ▼
-Generate Reports
+Portfolio Analytics
       │
       ▼
-Explore Dashboards
+Executive Dashboard
       │
       ▼
-Use AI Copilot
+AI Copilot
+      │
+      ▼
+Download Reports
 """,
-    language="text",
+language="text",
 )
 
 st.divider()
 
 # ==========================================================
-# FIRST TIME USER GUIDE
+# GETTING STARTED
 # ==========================================================
 
-st.header("🚀 First Time Setup")
+st.header("🚀 Getting Started")
 
-steps = [
-    "Open **Upload & Run** from the navigation menu.",
-    "Upload your Healthcare Insurance dataset (CSV or XLSX).",
-    "Choose an execution mode.",
-    "Run the complete Healthcare Analytics Pipeline.",
-    "Explore the generated dashboards and reports.",
-    "Use the AI Copilot for interactive portfolio analysis.",
-]
+step1, step2 = st.columns(2)
 
-for i, step in enumerate(steps, start=1):
-    st.success(f"Step {i}: {step}")
+with step1:
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 1️⃣
+
+Open **Upload & Run** from the navigation menu.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 2️⃣
+
+Upload your Healthcare Insurance dataset.
+
+Supported formats:
+
+• CSV
+
+• XLSX
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 3️⃣
+
+Choose the preferred execution mode.
+
+Production Mode is recommended for most users.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+with step2:
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 4️⃣
+
+Run the complete analytics pipeline.
+
+The platform automatically performs:
+
+✔ Validation
+
+✔ Preprocessing
+
+✔ Predictions
+
+✔ Portfolio Analytics
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 5️⃣
+
+Explore interactive dashboards.
+
+Gain insights into:
+
+• Risk
+
+• Pricing
+
+• Claims
+
+• Retention
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="step-card">
+
+### Step 6️⃣
+
+Use the AI Copilot to explore your portfolio using natural language.
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
 
 st.divider()
 
@@ -120,129 +486,230 @@ prod, dev = st.columns(2)
 
 with prod:
 
-    st.success("🚀 Production Mode")
-
     st.markdown(
-        """
-### Recommended
-
-Uses pretrained machine learning models.
-
-**Best for**
-
-- Daily business analysis
-- Portfolio assessment
-- Dashboard generation
-- Fast execution
-- Production deployment
-
-No model retraining is performed.
 """
-    )
+<div class="mode-card">
+
+# 🚀 Production Mode
+
+### Recommended for Business Users
+
+Uses pre-trained machine learning models for fast and reliable execution.
+
+---
+
+### Best For
+
+✔ Portfolio Analysis
+
+✔ Business Intelligence
+
+✔ Executive Dashboards
+
+✔ Daily Operations
+
+✔ Production Deployment
+
+---
+
+### Advantages
+
+• Fast Execution
+
+• No Retraining Required
+
+• Stable Predictions
+
+• Lower Resource Usage
+
+• Recommended for most users
+
+</div>
+""",
+unsafe_allow_html=True,
+)
 
 with dev:
 
-    st.warning("🛠 Developer Mode")
-
     st.markdown(
-        """
-### Advanced Users
-
-Retrains all machine learning models before prediction.
-
-**Best for**
-
-- Model development
-- Updated datasets
-- Feature engineering
-- Hyperparameter tuning
-- Research experiments
-
-Execution takes significantly longer.
 """
-    )
+<div class="mode-card">
+
+# 🛠 Developer Mode
+
+### Recommended for Data Scientists
+
+Retrains machine learning models before generating predictions.
+
+---
+
+### Best For
+
+✔ Research
+
+✔ Feature Engineering
+
+✔ Updated Datasets
+
+✔ Model Development
+
+✔ Experimentation
+
+---
+
+### Considerations
+
+• Longer Execution Time
+
+• Higher Compute Usage
+
+• Model Retraining
+
+• Intended for advanced users
+
+</div>
+""",
+unsafe_allow_html=True,
+)
+
+st.success(
+"""
+💡 **Recommendation:** Unless you are developing or improving machine learning models, **Production Mode** is the preferred option. It reuses trained models to provide faster execution while maintaining consistent analytics results.
+"""
+)
 
 st.divider()
 
+# ==========================================================
+# END OF PART 1
+# ==========================================================
+```
+```python
 # ==========================================================
 # PLATFORM MODULES
 # ==========================================================
 
 st.header("📦 Platform Modules")
 
+st.caption(
+    "Each module focuses on a different stage of the healthcare insurance decision-making process."
+)
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
 
-    st.subheader("📊 Executive Dashboard")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("📊 Executive Dashboard")
+
+        st.write(
+            """
+The Executive Dashboard provides a high-level overview of portfolio performance through key business indicators.
+
+**Highlights**
+
 - Portfolio KPIs
-- Business Summary
 - Premium Overview
+- Claims Summary
 - Risk Distribution
+- Business Performance
 """
-    )
+        )
 
-    st.subheader("⚠ Underwriting")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("⚠️ Underwriting Analytics")
+
+        st.write(
+            """
+Predicts customer risk using machine learning.
+
+**Capabilities**
+
 - Risk Classification
-- Underwriting Decisions
+- Underwriting Decision Support
+- Risk Scores
 - SHAP Explainability
 - Individual Prediction Explanations
 """
-    )
+        )
 
 with col2:
 
-    st.subheader("💰 Pricing")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("💰 Pricing Analytics")
+
+        st.write(
+            """
+Optimizes premium recommendations using predictive models.
+
+**Capabilities**
+
 - Claim Cost Prediction
 - Premium Recommendation
 - Pricing Performance
-- Portfolio Profitability
+- Profitability Analysis
+- Premium Leakage Analysis
 """
-    )
+        )
 
-    st.subheader("🔄 Retention")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("🔄 Retention Analytics")
+
+        st.write(
+            """
+Identifies customers likely to lapse and estimates business impact.
+
+**Capabilities**
+
 - Lapse Prediction
 - Revenue at Risk
 - Customer Segmentation
-- Retention Strategies
+- Retention Recommendations
 """
-    )
+        )
 
 with col3:
 
-    st.subheader("📈 Portfolio Analytics")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("📈 Portfolio Analytics")
+
+        st.write(
+            """
+Provides comprehensive portfolio-level insights.
+
+**Capabilities**
+
 - Exposure Analysis
-- Claims Analysis
+- Claims Analytics
 - Portfolio Trends
 - Executive Reports
+- Business Intelligence
 """
-    )
+        )
 
-    st.subheader("🤖 AI Copilot")
+    with st.container(border=True):
 
-    st.markdown(
-        """
+        st.subheader("🤖 AI Copilot")
+
+        st.write(
+            """
+Ask questions about your insurance portfolio using natural language.
+
+**Capabilities**
+
 - Portfolio Question Answering
-- Explain Predictions
-- Business Insights
-- Document Search (RAG)
+- Executive Insight Generation
+- Analytics Interpretation
+- Explain Model Predictions
+- Upload Enterprise Documents
+- Bring Your Own Gemini API Key
 """
-    )
+        )
 
 st.divider()
 
@@ -256,29 +723,41 @@ left, right = st.columns(2)
 
 with left:
 
-    st.markdown(
-        """
-### Machine Learning Outputs
+    with st.container(border=True):
+
+        st.subheader("🤖 Machine Learning Outputs")
+
+        st.write(
+            """
+After executing the pipeline, the platform generates:
 
 - Underwriting Predictions
 - Premium Quotes
 - Lapse Predictions
-- SHAP Explainability Reports
+- SHAP Explanations
+- Prediction Reports
+- Model Metrics
 """
-    )
+        )
 
 with right:
 
-    st.markdown(
-        """
-### Business Intelligence Outputs
+    with st.container(border=True):
 
-- Executive KPIs
-- Portfolio Analytics
+        st.subheader("📊 Business Intelligence Outputs")
+
+        st.write(
+            """
+Business-ready reports include:
+
+- Executive Dashboard
+- Portfolio KPIs
 - Pricing Reports
-- Dashboard Visualizations
+- Claims Analytics
+- Trend Analysis
+- Interactive Visualizations
 """
-    )
+        )
 
 st.divider()
 
@@ -286,37 +765,23 @@ st.divider()
 # SUPPORTED INPUTS
 # ==========================================================
 
-st.header("📁 Supported Input Formats")
+st.header("📁 Supported Dataset Formats")
 
-st.info(
-    """
-Supported file types:
+c1, c2 = st.columns([1, 2])
 
-- CSV
-- XLSX
+with c1:
 
-Uploaded datasets are automatically validated and preprocessed before analytics are executed.
+    st.metric("Supported Formats", "CSV / XLSX")
+
+with c2:
+
+    st.info(
+        """
+Uploaded datasets are automatically validated before entering the analytics pipeline.
+
+The platform performs preprocessing, feature engineering, and prediction generation with minimal user intervention.
 """
-)
-
-st.divider()
-
-# ==========================================================
-# QUICK START
-# ==========================================================
-
-st.header("⚡ Quick Start")
-
-st.markdown(
-    """
-1. Open **Upload & Run**
-2. Upload your dataset
-3. Select **Production Mode** *(recommended)*
-4. Execute the Healthcare Analytics Pipeline
-5. Explore dashboards and reports
-6. Use the AI Copilot for deeper business insights
-"""
-)
+    )
 
 st.divider()
 
@@ -326,55 +791,180 @@ st.divider()
 
 st.header("❓ Frequently Asked Questions")
 
-with st.expander("Which execution mode should I use?"):
+with st.expander("🚀 Which execution mode should I choose?"):
 
     st.write(
         """
-For almost all users, **Production Mode** is recommended.
+For most users, **Production Mode** is recommended.
 
-Choose **Developer Mode** only when you need to retrain machine learning models using updated datasets.
+It loads the pretrained machine learning models and generates analytics significantly faster.
+
+Choose **Developer Mode** only if you need to retrain or improve the models using new datasets.
 """
     )
 
-with st.expander("Do I need to retrain models every time?"):
+with st.expander("🧠 Do I need to retrain the models every time?"):
 
     st.write(
         """
 No.
 
-Once the machine learning models have been trained and saved,
-Production Mode automatically reuses those trained models for future analyses.
+Once trained, the platform stores the machine learning models and reuses them automatically in Production Mode.
 
-Retraining is only required when new data or improved models are introduced.
+Retraining is only necessary when introducing new data or improving the models.
 """
     )
 
-with st.expander("What datasets are supported?"):
+with st.expander("📂 What datasets are supported?"):
 
     st.write(
         """
-Supported formats:
+Supported formats include:
 
 - CSV
 - XLSX
 
-The dataset should contain healthcare insurance portfolio information compatible with the platform's preprocessing pipeline.
+The uploaded dataset should follow the healthcare insurance portfolio schema expected by the preprocessing pipeline.
 """
     )
 
-with st.expander("What does the AI Copilot do?"):
+with st.expander("🤖 What does the AI Copilot do?"):
 
     st.write(
         """
-The AI Copilot can:
+The AI Copilot can assist by:
 
-- Answer questions about your portfolio
-- Explain model predictions
-- Summarize business insights
-- Search uploaded company documents using RAG
-- Assist with insurance analytics
+- Explaining dashboard metrics
+- Summarizing portfolio performance
+- Interpreting machine learning outputs
+- Answering business questions
+- Using uploaded enterprise documents as additional context
 """
     )
+
+st.divider()
+
+# ==========================================================
+# QUICK LINKS
+# ==========================================================
+
+st.header("🔗 Useful Links")
+
+g1, g2, g3 = st.columns(3)
+
+with g1:
+
+    st.link_button(
+        "💻 GitHub Repository",
+        "https://github.com/veerkumarmodi76-afk/Healthcare-Analytics-Agent",
+        use_container_width=True,
+    )
+
+with g2:
+
+    st.link_button(
+        "👤 Veer Kumar Modi",
+        "https://www.linkedin.com/in/veerkumarmodi",
+        use_container_width=True,
+    )
+
+with g3:
+
+    st.link_button(
+        "🌐 Live Demo",
+        "https://healthcare-analytics-agent-4.streamlit.app/",
+        use_container_width=True,
+    )
+
+st.divider()
+
+# ==========================================================
+# TEAM
+# ==========================================================
+
+st.header("👥 Development Team")
+
+st.caption(
+    "This platform was developed collaboratively as part of an AI-powered Healthcare Insurance Analytics project."
+)
+
+with st.container(border=True):
+
+    st.subheader("🏆 Project Lead")
+
+    st.markdown(
+        """
+### **Veer Kumar Modi**
+
+**Responsibilities**
+
+- Solution Architecture
+- Data Engineering
+- Machine Learning Integration
+- Dashboard Development
+- AI Copilot
+- Platform Integration
+
+🔗 **GitHub**
+
+https://github.com/veerkumarmodi76-afk
+
+🔗 **LinkedIn**
+
+https://www.linkedin.com/in/veerkumarmodi
+"""
+    )
+
+st.write("")
+
+st.subheader("Contributors")
+
+team = [
+    (
+        "Aishvarya Lukshme",
+        "Retention (Lapse) Analytics",
+        "https://www.linkedin.com/in/aishvarya-lukshme-16a126315/",
+    ),
+    (
+        "Leandra Antony",
+        "Portfolio Analytics",
+        "https://www.linkedin.com/in/leandra-antony-8359282b4/",
+    ),
+    (
+        "Sivadharshini Thanapal",
+        "Pricing Analytics",
+        "https://www.linkedin.com/in/sivadharshini2710/",
+    ),
+    (
+        "Bineetha V. S.",
+        "Data Validation",
+        "https://www.linkedin.com/in/bineetha-v-s/",
+    ),
+    (
+        "Sangamithra J. S.",
+        "Underwriting Analytics",
+        "https://www.linkedin.com/in/sangamithra-j-s-ab7338375/",
+    ),
+]
+
+for name, role, linkedin in team:
+
+    with st.container(border=True):
+
+        c1, c2, c3 = st.columns([3, 3, 2])
+
+        with c1:
+            st.markdown(f"### {name}")
+
+        with c2:
+            st.write(role)
+
+        with c3:
+            st.link_button(
+                "LinkedIn",
+                linkedin,
+                use_container_width=True,
+            )
 
 st.divider()
 
@@ -384,14 +974,11 @@ st.divider()
 
 st.header("🎯 Platform Summary")
 
-st.info(
+st.success(
     """
-This platform integrates **Machine Learning**, **Explainable AI**, and
-**Business Intelligence** into a unified decision support system for healthcare
-insurance analytics.
+The **Healthcare Insurance Decision Intelligence Platform** unifies machine learning, business intelligence, explainable AI, and an AI-powered Copilot into a single decision support system.
 
-Whether you are an underwriter, pricing analyst, portfolio manager, or business executive,
-the platform provides actionable insights from a single workflow.
+Whether you are an underwriter, pricing analyst, portfolio manager, executive, or researcher, the platform enables you to transform raw healthcare insurance data into actionable insights through an automated end-to-end analytics workflow.
 """
 )
 
@@ -401,6 +988,31 @@ st.divider()
 # FOOTER
 # ==========================================================
 
-st.caption(
-    "Healthcare Insurance Decision Intelligence Platform • Version 2.0"
+st.markdown(
+    """
+---
+<center>
+
+### 🏥 Healthcare Insurance Decision Intelligence Platform
+
+**Version 2.0**
+
+Built with ❤️ using **Python**, **Streamlit**, **XGBoost**, **SHAP**, **Plotly**, and **Google Gemini**
+
+**Project Repository**
+
+https://github.com/veerkumarmodi76-afk/Healthcare-Analytics-Agent
+
+**Project Lead**
+
+Veer Kumar Modi
+
+https://www.linkedin.com/in/veerkumarmodi
+
+© 2026 Healthcare Insurance Decision Intelligence Platform
+
+</center>
+""",
+    unsafe_allow_html=True,
 )
+```
