@@ -1,672 +1,405 @@
-# Healthcare Analytics Agent
+# 🏥 Healthcare Insurance Decision Intelligence Platform
 
-## AI-Powered Healthcare Insurance Decision Intelligence Platform
+> An AI-powered end-to-end Healthcare Insurance Analytics Platform that streamlines underwriting, pricing, retention analysis, portfolio monitoring, business intelligence, and AI-assisted decision support.
+
+<p align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)]()
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B.svg)]()
+[![XGBoost](https://img.shields.io/badge/XGBoost-Machine%20Learning-green.svg)]()
+[![SHAP](https://img.shields.io/badge/SHAP-Explainable%20AI-orange.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-purple.svg)]()
+
+</p>
 
 ---
 
-# Project Vision
+## 📖 Overview
 
-Healthcare Analytics Agent is a production-style AI-powered Healthcare Insurance Decision Intelligence Platform designed to automate the complete insurance analytics lifecycle.
+Healthcare insurers rely on multiple disconnected processes for underwriting, pricing, customer retention, portfolio monitoring, and reporting. This project consolidates these workflows into a single AI-powered decision intelligence platform.
 
-Rather than functioning as a collection of isolated machine learning notebooks, the platform simulates an enterprise-grade insurance analytics system capable of transforming raw insurance portfolio data into actionable business intelligence through automated data engineering, predictive analytics, explainable AI, Retrieval-Augmented Generation (RAG), and conversational AI.
+The application enables users to upload healthcare insurance datasets, execute an automated analytics pipeline, visualize business insights through interactive dashboards, and interact with an AI Copilot for portfolio exploration.
 
-The platform combines actuarial analytics, machine learning, explainable AI, vector search, and Large Language Models into a unified decision-support system for insurers, underwriters, pricing analysts, actuaries, and business executives.
+The platform combines:
+
+* 📊 Business Intelligence
+* 🤖 Machine Learning
+* 🔍 Explainable AI (SHAP)
+* 📈 Interactive Analytics
+* 💬 AI-assisted Decision Support
+
+within a unified Streamlit application.
 
 ---
 
-# Project Objectives
+# ✨ Features
 
-The platform automates the complete insurance analytics workflow by providing:
+## 📤 Dataset Management
 
-* Automated dataset management
-* Data validation
-* Data quality assessment
+* Upload healthcare insurance datasets (CSV/XLSX)
+* Automated dataset validation
 * Data preprocessing
 * Feature engineering
-* Portfolio segmentation
-* Portfolio analytics
-* Underwriting risk assessment
-* Premium pricing prediction
-* Lapse prediction
-* Explainable AI
-* Executive reporting
-* Interactive dashboards
-* AI-powered portfolio intelligence
-* Retrieval-Augmented Generation (RAG)
-* Enterprise AI Copilot
+* Persistent portfolio management
 
 ---
 
-# Target Users
+## 🤖 Machine Learning Modules
 
-* Insurance Companies
-* Health Insurers
-* Underwriters
-* Pricing Analysts
-* Actuaries
-* Portfolio Managers
-* Risk Analysts
-* Claims Analysts
-* Business Executives
+### Underwriting Analytics
 
----
+* Risk Classification
+* Risk Score Prediction
+* Underwriting Decision Support
+* SHAP Explainability
 
-# End-to-End Workflow
+### Pricing Analytics
 
-```text
-Launch Application
-        │
-        ▼
-Detect Existing Portfolio
-        │
-        ├───────────────┐
-        │               │
-        ▼               ▼
- Continue         Replace Dataset
-        │               │
-        │         Upload New Dataset
-        │               │
-        └──────────────►
-                Data Validation
-                        │
-                        ▼
-                Data Preprocessing
-                        │
-                        ▼
-               Feature Engineering
-                        │
-                        ▼
-        Machine Learning Pipelines
-        ┌─────────┬─────────┬─────────┐
-        ▼         ▼         ▼
- Underwriting Pricing   Lapse
-        └─────────┼─────────┘
-                  ▼
-         Portfolio Analytics
-                  ▼
-        Executive Reports
-                  ▼
-        Knowledge Base
-                  ▼
-      Embedding Generation
-                  ▼
-          Vector Database
-                  ▼
-             AI Copilot
-                  ▼
-     Interactive Dashboard
-```
+* Claim Cost Prediction
+* Premium Recommendation
+* Premium Leakage Analysis
+
+### Retention Analytics
+
+* Lapse Prediction
+* Customer Segmentation
+* Revenue-at-Risk Analysis
+* Retention Recommendations
 
 ---
 
-# Smart Dataset Management
+## 📊 Business Intelligence
 
-The application maintains a persistent insurance portfolio rather than acting as a one-time analytics demo.
-
-When launched:
-
-* Existing portfolios are automatically loaded.
-* Users can immediately access dashboards and reports.
-* Users may replace the active portfolio with a new CSV dataset.
-* Before replacement, the system warns that analytics will be regenerated.
-* Once confirmed, the complete analytics pipeline executes automatically.
-
-This mirrors enterprise insurance analytics platforms where a production dataset is continuously maintained.
-
----
-
-# Automated Analytics Pipeline
-
-Whenever a new portfolio is uploaded, the platform executes the following stages automatically.
-
-## Data Validation
-
-* Schema validation
-* Missing value detection
-* Duplicate detection
-* Invalid value detection
-* Outlier detection
-* Data quality scoring
-
----
-
-## Data Cleaning
-
-* Missing value treatment
-* Duplicate removal
-* Data type correction
-* Standardization
-* Normalization
-* Validation
-
----
-
-## Feature Engineering
-
-Automatically creates actuarial features including:
-
-* Premium per Exposure
-* Claims per Exposure
-* Claim Frequency
-* Claim Severity
-* Loss Ratio
-* Age Bands
-* Seniority Bands
-* Portfolio Segments
-* Segment Scores
-* Risk Scores
-
----
-
-# Machine Learning Modules
-
-## Underwriting Engine
-
-Predicts
-
-* Risk Class
-* Underwriting Decision
-* Prediction Confidence
-* Decision Drivers
-
----
-
-## Pricing Engine
-
-Predicts
-
-* Expected Claim Cost
-* Recommended Premium
-* Pricing Confidence
-* Pricing Leakage
-
----
-
-## Lapse Prediction Engine
-
-Predicts
-
-* Lapse Probability
-* Revenue at Risk
-* Customer Risk Segment
-* Retention Priority
-* Recommended Retention Action
-
----
-
-# Portfolio Analytics
-
-The Portfolio Analytics layer combines outputs from every machine learning module into a unified enterprise portfolio view.
-
-Generated analytics include:
+Interactive dashboards provide insights into:
 
 * Executive KPIs
-* Portfolio Health Score
-* Portfolio Profitability
-* Risk Analytics
-* Claims Analytics
-* Pricing Analytics
-* Retention Analytics
-* Trend Analysis
-* Executive Summary
-
----
-
-# Explainable AI
-
-Transparency is a core design principle.
-
-Every machine learning prediction includes:
-
-* SHAP Feature Importance
-* Local SHAP Explanations
-* Business Interpretation
-* Decision Drivers
-* Confidence Scores
-
-This enables technical and non-technical users to understand how predictions were generated.
-
----
-
-# AI Intelligence Layer
-
-The project separates Machine Learning from Artificial Intelligence.
-
-Machine Learning generates predictions.
-
-Artificial Intelligence interprets those predictions and transforms them into business knowledge.
-
----
-
-# Retrieval-Augmented Generation (RAG)
-
-Instead of sending every report directly to the language model, the AI Copilot retrieves only the most relevant information from an indexed enterprise knowledge base.
-
-The knowledge base is automatically created from project-generated artifacts.
-
-Knowledge Sources
-
-* Executive Reports
-* Portfolio Analytics
-* Pricing Reports
-* Underwriting Reports
-* Lapse Reports
-* Validation Reports
-* SHAP Explanations
-* Portfolio Metrics
-* Executive Summaries
-* Markdown Reports
-* JSON Reports
-
-RAG Workflow
-
-```text
-Generated Reports
-        │
-        ▼
-Document Chunking
-        │
-        ▼
-Embedding Generation
-        │
-        ▼
-Vector Database
-        │
-        ▼
-Similarity Search
-        │
-        ▼
-Relevant Context
-        │
-        ▼
-Prompt Builder
-        │
-        ▼
-Large Language Model
-        │
-        ▼
-Grounded Response
-```
-
-Benefits
-
-* Reduced hallucinations
-* Grounded responses
-* Faster retrieval
-* Enterprise-scale architecture
-* Explainable conversational analytics
-
----
-
-# AI Copilot
-
-The AI Copilot enables users to interact with the platform using natural language.
-
-Example questions
-
-* Why are claims increasing?
-* Which customer segments are least profitable?
-* Why was this premium recommended?
-* Which applicants should be manually reviewed?
-* Which customers are likely to lapse?
-* Summarize the insurance portfolio.
-* What business risks require immediate attention?
-* Recommend actions to improve profitability.
-
-The AI Copilot answers using:
-
-* Portfolio Analytics
-* Machine Learning Predictions
-* SHAP Explanations
-* Executive Reports
-* Validation Reports
-* Business Recommendations
-* Retrieved Knowledge Base Context
-
-Unlike a general-purpose chatbot, the AI Copilot grounds every response using Retrieval-Augmented Generation.
-
----
-
-# Bring Your Own AI (BYO API)
-
-The platform supports user-configurable AI providers.
-
-Users can securely configure their preferred Large Language Model provider through the application settings.
-
-Supported providers include:
-
-* Google Gemini
-* OpenAI
-* Anthropic
-* OpenRouter
-
-Users can:
-
-* Add their own API key
-* Select AI provider
-* Choose model
-* Configure temperature
-* Configure token limits
-* Validate API connectivity
-
-No API credentials are hardcoded within the project.
-
----
-
-# Interactive Dashboard
-
-The Streamlit dashboard serves as the primary business interface.
-
-Modules include:
-
-## Home
-
-Displays
-
-* Portfolio Overview
-* Executive KPIs
-* Dataset Information
-* AI Executive Summary
-
----
-
-## Portfolio Analytics
-
-* Portfolio Health
 * Risk Distribution
-* Profitability
-* Claims Analysis
-* Trend Analysis
+* Claims Performance
+* Pricing Performance
+* Customer Retention
+* Portfolio Trends
 
 ---
 
-## Pricing Analytics
+## 🤖 AI Copilot
 
-* Premium Prediction
-* Pricing Calibration
-* Residual Analysis
-* Feature Importance
+The platform includes an AI-powered Copilot that helps users explore healthcare insurance portfolios using natural language.
 
----
+Current capabilities include:
 
-## Underwriting Analytics
+* Portfolio summarization
+* Executive insight generation
+* Analytics interpretation
+* Business question answering
+* Enterprise document upload
+* Bring Your Own Gemini API Key (BYOK)
 
-* Risk Classification
-* Decision Distribution
-* SHAP Explanations
-* Confusion Matrix
-
----
-
-## Lapse Analytics
-
-* Lapse Probability
-* Revenue at Risk
-* Retention Segments
-* Customer Rankings
+The Copilot uses the generated analytical outputs and uploaded enterprise documents as additional context whenever relevant.
 
 ---
 
-## AI Copilot
+# 🏗️ System Architecture
 
-Natural language interface powered by Retrieval-Augmented Generation.
-
----
-
-## Knowledge Base
-
-Displays:
-
-* Indexed Reports
-* Document Count
-* Embedding Status
-* Vector Database Status
-* Last Index Time
-
----
-
-## Settings
-
-Configure:
-
-* AI Provider
-* API Key
-* Model Selection
-* AI Parameters
-
----
-
-## Reports
-
-Export
-
-* Executive Report
-* Prediction Files
-* Portfolio Reports
-* Analytics Outputs
+```text
+                Upload Dataset
+                      │
+                      ▼
+                Data Validation
+                       │
+                       ▼
+               Data Preprocessing
+                       │
+                       ▼
+              Feature Engineering
+                       │
+             ┌──────────┬──────────┬
+             ▼          ▼          ▼
+        Underwriting   Pricing   Retention
+               └──────────┼──────────┘
+                          ▼
+                Portfolio Analytics
+                          ▼
+                Executive Dashboard
+                          ▼
+                    AI Copilot
+                          ▼
+                 Download Reports
+```
 
 ---
 
-# Generated Outputs
+# 🚀 Platform Workflow
 
-## Data Outputs
-
-* Processed Dataset
-* Data Quality Report
-* Feature Dictionary
-
----
-
-## Underwriting Outputs
-
-* Risk Classification
-* Decision Recommendations
-* SHAP Reports
-
----
-
-## Pricing Outputs
-
-* Premium Recommendations
-* Expected Claims
-* Feature Importance
-
----
-
-## Lapse Outputs
-
-* Lapse Predictions
-* Retention Actions
-* Revenue at Risk
+```text
+Upload Dataset
+      │
+      ▼
+Validate Data
+      │
+      ▼
+Preprocess Dataset
+      │
+      ▼
+Run Analytics Pipeline
+      │
+      ▼
+Generate Predictions
+      │
+      ▼
+Business Intelligence Dashboards
+      │
+      ▼
+AI Copilot
+      │
+      ▼
+Download Reports
+```
 
 ---
 
-## Portfolio Outputs
+# 📊 Dashboard Modules
 
-* Executive KPIs
-* Portfolio Metrics
-* Portfolio Health
-* Trend Analytics
-* Executive Summary
+The platform consists of the following interactive pages:
 
----
-
-## AI Outputs
-
-* Executive Reports
-* Business Recommendations
-* Conversational Responses
-* Decision Explanations
-* Knowledge Base
-* AI Copilot Responses
+* 🏠 Home
+* 📤 Upload & Run
+* 📊 Executive Dashboard
+* ⚠️ Risk Analytics
+* 🏥 Claims Analytics
+* 💰 Pricing Analytics
+* 🔄 Retention Analytics
+* 📈 Trend Analytics
+* 🤖 AI Copilot
+* 📥 Download Center
 
 ---
 
-# Technology Stack
+# 🧠 Machine Learning Models
 
-## Frontend
+| Module            | Model              |
+| ----------------- | ------------------ |
+| Underwriting      | XGBoost Classifier |
+| Pricing           | XGBoost Regressor  |
+| Retention (Lapse) | XGBoost Classifier |
+
+Model predictions are interpreted using **SHAP (SHapley Additive exPlanations)** to provide transparent and explainable insights.
+
+---
+
+# 💻 Technology Stack
+
+### Frontend
 
 * Streamlit
 
-## Backend
+### Backend
 
 * Python
 
-## Data Processing
+### Data Processing
 
 * Pandas
 * NumPy
 
-## Machine Learning
+### Machine Learning
 
-* Scikit-learn
 * XGBoost
+* Scikit-learn
 
-## Explainable AI
+### Explainable AI
 
 * SHAP
 
-## Vector Database
+### Data Visualization
 
-* ChromaDB / FAISS
+* Plotly
 
-## Embeddings
+### Generative AI
 
-* Sentence Transformers
+* Google Gemini (Bring Your Own API Key)
 
-## Large Language Models
+### Utilities
 
-* Google Gemini
-* OpenAI
-* Anthropic
-* OpenRouter Compatible Models
+* Joblib
+* OpenPyXL
 
 ---
 
-# System Architecture
-
-```text
-                     Healthcare Analytics Agent
-
-                               │
-                               ▼
-                      Dataset Management
-                               │
-                               ▼
-                     Data Validation Layer
-                               │
-                               ▼
-                     Data Preprocessing
-                               │
-                               ▼
-                   Feature Engineering Layer
-                               │
-          ┌────────────────────┼────────────────────┐
-          ▼                    ▼                    ▼
-   Underwriting Engine   Pricing Engine    Lapse Engine
-          └────────────────────┼────────────────────┘
-                               ▼
-                    Portfolio Analytics Layer
-                               │
-                               ▼
-                  Explainability Layer (SHAP)
-                               │
-                               ▼
-                  Executive Reports & Analytics
-                               │
-                               ▼
-                    Embedding Generation
-                               │
-                               ▼
-                        Vector Database
-                               │
-                               ▼
-                      Similarity Retriever
-                               │
-                               ▼
-                        Prompt Builder
-                               │
-                               ▼
-                 User Selected Large Language Model
-                               │
-                               ▼
-                         AI Copilot
-                               │
-                               ▼
-                  Interactive Streamlit Dashboard
-```
-
----
-
-# Repository Structure
+# 📂 Repository Structure
 
 ```text
 Healthcare-Analytics-Agent/
-
+│
 ├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── uploads/
+│
 ├── docs/
+│
 ├── models/
+│   ├── underwriting/
+│   ├── pricing/
+│   └── lapse/
+│
 ├── outputs/
+│
 ├── reports/
+│
 ├── src/
-│   ├── config/
+│   ├── dashboard/
 │   ├── preprocessing/
 │   ├── underwriting/
 │   ├── pricing/
 │   ├── lapse/
 │   ├── portfolio/
-│   ├── dashboard/
 │   ├── copilot/
-│   │   ├── embeddings.py
-│   │   ├── vector_store.py
-│   │   ├── retriever.py
-│   │   ├── prompt_builder.py
-│   │   └── llm.py
-│   └── services/
+│   ├── services/
+│   ├── pipeline/
+│   └── utils/
+│
+├── app.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# Key Features
+# 📦 Installation
 
-* End-to-end automated insurance analytics pipeline
-* Persistent portfolio management
-* Automated feature engineering
-* Multiple machine learning models
-* Portfolio-wide business intelligence
-* Explainable AI with SHAP
+## Clone the repository
+
+```bash
+git clone https://github.com/veerkumarmodi76-afk/Healthcare-Analytics-Agent.git
+
+cd Healthcare-Analytics-Agent
+```
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run the application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+# ▶️ Usage
+
+1. Launch the Streamlit application.
+2. Navigate to **Upload & Run**.
+3. Upload a healthcare insurance dataset.
+4. Execute the automated analytics pipeline.
+5. Explore the generated dashboards.
+6. Interact with the AI Copilot using your own Gemini API Key.
+7. Download generated reports and analytics outputs.
+
+---
+
+# 📁 Dataset
+
+This project uses the publicly available:
+
+**Dataset of Health Insurance Portfolio**
+
+* **Publisher:** Mendeley Data
+* **access:** https://data.mendeley.com/datasets/386vmj2tbk/4 
+* **Version:** 4 (2025)
+* **DOI:** 10.17632/386vmj2tbk.4
+
+### Dataset Characteristics
+
+* 228,711 policy records
+* 42 variables
+* Healthcare insurance portfolio data (2017–2019)
+
+### Citation
+
+> Lledó, Josep; Espinosa Adamez, Priscila; Perez Gimenez, Virgilio (2025). Dataset of Health Insurance Portfolio. Mendeley Data. DOI: 10.17632/386vmj2tbk.4
+
+---
+
+# 🌐 Live Demo
+
+**Streamlit Application**
+
+https://healthcare-analytics-agent-4.streamlit.app/
+
+---
+# 👥 Team
+
+## Project Lead
+### Veer Kumar Modi
+
+**Responsibilities**
+
+- System Architecture
+- Data Engineering
+- Machine Learning Integration
+- Dashboard Development
+- AI Copilot
+- Platform Integration
+
+**GitHub:** https://github.com/veerkumarmodi76-afk
+
+**LinkedIn:** https://www.linkedin.com/in/veerkumarmodi/
+
+---
+## Contributors
+
+| Member                     | Responsibility              | LinkedIn                                                 |
+| -------------------------- | --------------------------- | -------------------------------------------------------- |
+| **Aishvarya Lukshme**      | Retention (Lapse) Analytics | https://www.linkedin.com/in/aishvarya-lukshme-16a126315/ |
+| **Leandra Antony**         | Portfolio Analytics         | https://www.linkedin.com/in/leandra-antony-8359282b4/    |
+| **Sivadharshini Thanapal** | Pricing Analytics           | https://www.linkedin.com/in/sivadharshini2710/           |
+| **Bineetha V. S.**         | Data Validation             | https://www.linkedin.com/in/bineetha-v-s/                |
+| **Sangamithra J. S.**      | Underwriting Analytics      | https://www.linkedin.com/in/sangamithra-j-s-ab7338375/   |
+
+---
+
+# 🚀 Future Improvements
+
+Planned enhancements include:
+
 * Retrieval-Augmented Generation (RAG)
-* Enterprise knowledge base
-* Vector database integration
-* AI Copilot with grounded responses
-* User-configurable AI providers
-* Bring Your Own API support
-* Interactive Streamlit dashboard
-* Modular production-ready architecture
-* Automated executive reporting
+* Enterprise Knowledge Base
+* Vector Database Integration
+* Multi-user Authentication
+* Role-Based Access Control (RBAC)
+* REST API
+* Cloud-native Deployment
+* Automated Model Monitoring
+* Scheduled Model Retraining
+* Portfolio Versioning
+* Agentic AI Workflows
 
 ---
 
-# Future Roadmap
+# 📜 License
 
-* Multi-user authentication
-* Portfolio versioning
-* Cloud deployment
-* Database integration
-* Scheduled analytics
-* Model monitoring
-* Agentic AI workflows
-* Real-time portfolio updates
-* Multi-portfolio comparison
-* Enterprise role-based access control
+This project is intended for educational and research purposes.
 
 ---
 
-# Final Deliverable
+# 🙏 Acknowledgements
 
-Healthcare Analytics Agent demonstrates how modern actuarial science, machine learning, explainable AI, Retrieval-Augmented Generation, vector databases, and Large Language Models can be integrated into a single production-ready Healthcare Insurance Decision Intelligence Platform.
+* Mendeley Data
+* Streamlit
+* XGBoost
+* Scikit-learn
+* SHAP
+* Plotly
+* Google Gemini
 
-Users can upload an insurance portfolio, automatically generate predictive analytics, explore interactive dashboards, export executive reports, and interact with a grounded AI Copilot that answers questions using the platform's own analytical outputs rather than relying solely on the underlying language model.
+---
 
-The project is designed to reflect enterprise software architecture and production-grade AI engineering practices while remaining modular, scalable, and extensible for future enhancements.
+## ⭐ Support the Project
+
+If you found this project useful or interesting, consider giving the repository a **⭐ Star** on GitHub.
+
+It helps others discover the project and supports future development.
