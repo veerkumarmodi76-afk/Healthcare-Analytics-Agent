@@ -187,120 +187,129 @@ st.write("")
 
 st.header("📊 Platform Snapshot")
 
-c1, c2, c3, c4 = st.columns(4)
+card1, card2, card3, card4 = st.columns(4)
 
-with c1:
-    st.markdown(
-        """
-<div class="metric-card">
+with card1:
 
-<h2>3</h2>
+    with st.container(border=True):
 
-Machine Learning Models
+        st.markdown("## 🤖 3")
 
-Underwriting
+        st.markdown("### Machine Learning Models")
 
-Pricing
+        st.markdown("""
+- Underwriting
+- Pricing
+- Retention
+""")
 
-Retention
+with card2:
 
-</div>
-""",
-        unsafe_allow_html=True,
-    )
+    with st.container(border=True):
 
-with c2:
-    st.markdown(
-        """
-<div class="metric-card">
+        st.markdown("## 📊 7+")
 
-<h2>7+</h2>
+        st.markdown("### Analytics Modules")
 
-Analytics Modules
+        st.markdown("""
+- Executive Dashboard
+- Claims Analytics
+- Pricing Analytics
+- Retention Analytics
+- Trend Analytics
+""")
 
-Executive Dashboard
+with card3:
 
-Claims
+    with st.container(border=True):
 
-Pricing
+        st.markdown("## 💬 AI")
 
-Retention
+        st.markdown("### Enterprise Copilot")
 
-</div>
-""",
-        unsafe_allow_html=True,
-    )
+        st.markdown("""
+- Portfolio Insights
+- Business Q&A
+- Executive Summaries
+- Document Context
+""")
 
-with c3:
-    st.markdown(
-        """
-<div class="metric-card">
+with card4:
 
-<h2>AI</h2>
+    with st.container(border=True):
 
-Enterprise Copilot
+        st.markdown("## ⚡ 1 Click")
 
-Portfolio Insights
+        st.markdown("### Automated Pipeline")
 
-Business Q&A
-
-Document Context
-
-</div>
-""",
-        unsafe_allow_html=True,
-    )
-
-with c4:
-    st.markdown(
-        """
-<div class="metric-card">
-
-<h2>1 Click</h2>
-
-Automated Pipeline
-
-Validation
-
-Preprocessing
-
-Predictions
-
-Dashboards
-
-</div>
-""",
-        unsafe_allow_html=True,
-    )
+        st.markdown("""
+- Validation
+- Preprocessing
+- Predictions
+- Dashboards
+""")
 
 st.write("")
-
 # ==========================================================
 # ABOUT PLATFORM
 # ==========================================================
 
 st.header("📖 About the Platform")
 
-st.markdown(
+left, right = st.columns([2,1])
+
+with left:
+
+    st.markdown(
+        """
+The **Healthcare Insurance Decision Intelligence Platform** integrates the complete healthcare insurance analytics workflow into a single intelligent application.
+
+Instead of relying on disconnected tools for underwriting, pricing, retention analysis, portfolio monitoring, and executive reporting, users can upload a healthcare insurance dataset and execute an automated pipeline that generates business-ready insights.
+
+### Key Capabilities
+
+- 🤖 Machine Learning–Driven Decision Support
+- 📊 Interactive Business Intelligence Dashboards
+- 🔍 Explainable AI using SHAP
+- 💬 AI Copilot for Natural Language Queries
+- 📈 Portfolio Analytics & Executive Reporting
 """
-The **Healthcare Insurance Decision Intelligence Platform** integrates multiple insurance analytics workflows into a single intelligent application.
+    )
 
-Instead of relying on disconnected tools for underwriting, pricing, portfolio monitoring, and reporting, users can upload a healthcare insurance dataset and execute an automated analytics pipeline that produces interactive dashboards and business-ready insights.
+with right:
 
-The platform combines:
+    with st.container(border=True):
 
-- 🤖 Machine Learning
-- 📈 Business Intelligence
-- 🔍 Explainable AI (SHAP)
-- 💬 AI-Assisted Decision Support
-- 📊 Interactive Dashboards
+        st.subheader("🚀 Core Technologies")
 
-into one seamless experience.
-"""
-)
+        st.write("""
+**Frontend**
+
+- Streamlit
+
+**Backend**
+
+- Python
+
+**Machine Learning**
+
+- XGBoost
+- Scikit-learn
+
+**Explainability**
+
+- SHAP
+
+**Visualization**
+
+- Plotly
+
+**Generative AI**
+
+- Google Gemini
+""")
 
 st.divider()
-
 # ==========================================================
 # PLATFORM WORKFLOW
 # ==========================================================
